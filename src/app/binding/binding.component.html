@@ -1,0 +1,7 @@
+<p *ngFor = "let i of months">{{i}}</p>
+<span *ngIf = "isavailable">Condition is valid.</span>  
+
+<input type="text" [(ngModel)]="binding">
+{{binding}}
+
+<input type="submit" value="event binding" (click)="eventb()">
