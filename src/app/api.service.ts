@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService implements OnInit, OnDestroy{
 
   public sharingData="";
 
@@ -34,4 +34,17 @@ customObs(){
         observer.next(this.sharingData);
     });
   }
+  customObForHeaderRoute(){
+    return new Observable<String>(observer => {
+        observer.next(this.sharingData);
+    });
+  }
+  ngOnInit() {
+    console.log('service:OnInit');
+  }
+ 
+  ngOnDestroy() {
+    console.log('service:OnDestroy');
+  }
+  
 }

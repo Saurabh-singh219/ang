@@ -1,0 +1,45 @@
+
+<div *ngIf="false">
+    enter team sheet: <br>
+    team a:<br> 
+    <table>
+    <tr *ngFor="let item of teama; let i = index">
+        <td>player {{i+1}}</td>
+        <td><input type="text" [(ngModel)]="item.name"></td>
+        <td><mat-icon (click)="addPlayer(teama,i)">add_circle</mat-icon></td>
+        <td><mat-icon (click)="remPlayer(teama,i)">remove_circle_outline</mat-icon></td>
+    </tr>
+    </table>
+</div>  
+    <hr>
+    how many overs?<input type="text" [(ngModel)]="totalover"><br>
+    Toss<input type="submit" value="Team A" (click)="toss('TEAM A')" [disabled]="tossbuttonstatus">
+    <input type="submit" value="Team B" (click)="toss('TEAM B')" [disabled]="tossbuttonstatus">
+    {{tos[0]}}<br>
+    <div *ngIf="tossbuttonstatus">
+    <input type="submit" value="Batting" (click)="tossD('bat')" [disabled]="tossdbuttonstatus">
+    <input type="submit" value="Bowling" (click)="tossD('bowl')" [disabled]="tossdbuttonstatus">
+    </div>
+    <hr>
+    <div *ngIf="tossbuttonstatus && tossdbuttonstatus">
+        <div class="teamsheet">
+    enter run <input type="text" [(ngModel)]="run">
+    <input type="submit" value="done" (click)="updateScore()" [disabled]="!buttonstatus">
+    <hr>
+    <div *ngIf="batTeam[0]=='TEAM A'">TEAM A:{{totalscore}}</div>
+    <div *ngIf="batTeam[0]=='TEAM B'">TEAM B:{{totalscore}}</div>
+    <br>
+    <p *ngFor="let item of everyball; let i = index">{{item.over}}:Run scored-{{item.run}}<br></p>
+    </div>
+    <div *ngIf="!buttonstatus" class="teamsheet" style="margin-left: 500px;">
+        <hr>
+    enter run <input type="text" [(ngModel)]="run1">
+    <input type="submit" value="done" (click)="updateScore1()" [disabled]="!buttonstatus1"> Target:{{totalrun+1}}
+    <hr>
+    <div *ngIf="batTeam[0]=='TEAM B'">TEAM A:{{totalscore1}}</div>
+    <div *ngIf="batTeam[0]=='TEAM A'">TEAM B:{{totalscore1}}</div>
+    <br>
+    <p *ngFor="let item of everyball1; let i = index">{{item.over}}:Run scored-{{item.run}}<br></p>
+    </div>
+    <div *ngIf="resultStatus">{{winner}} wins</div>
+    </div>

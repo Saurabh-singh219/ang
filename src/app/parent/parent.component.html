@@ -1,0 +1,8 @@
+@input---->parent to child<br>
+@output---->child to parent <br>
+
+parent<br>
+<hr style="color:red">
+<app-child [item]="currentItem" (newItemEvent)="addItem($event)"></app-child>
+<hr style="color:red">
+data coming from child{{cameFromChild}}

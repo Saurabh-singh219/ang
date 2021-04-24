@@ -23,7 +23,7 @@ export class BindingComponent implements OnInit {
 
   ngOnInit() {
 
-    this.myservice.changeData("golu");
+    // this.myservice.changeData("golu");
   }
 
   eventb()
